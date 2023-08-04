@@ -7,7 +7,7 @@ Happy travelling!
 **Implemented features:**
 - Discover exciting locations
 - Create new favorite places
-- Edit it / delete it
+- Edit and delete the created places
 - Displaying the location on the map
 
 ### 🗺️ Demo
