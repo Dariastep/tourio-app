@@ -1,17 +1,30 @@
-import { places } from '../../../../lib/db.js';
+import dbConnect from "../../../../db/connect";
+import Place from "../../../../db/models/Place";
 
-export default function handler(request, response) {
+export default async function handler(request, response) {
+  await dbConnect();
   const { id } = request.query;
 
-  if (!id) {
-    return;
+  if (request.method === "GET") {
+    const places = await Place.findById(id);
+    if (!places) {
+      return response.status(404).json({ status: "Not found" });
+    }
+    response.status(200).json(places);
   }
-
-  const place = places.find((place) => place.id === id);
-
-  if (!place) {
-    return response.status(404).json({ status: 'Not found' });
+  if (request.method === "PATCH") {
+    const updatedPlace = request.body;
+    const places = await Place.findByIdAndUpdate(id, updatedPlace);
+    if (!places) {
+      return response.status(404).json({ status: "Not found" });
+    }
+    response.status(201).json({ status: "The place is edited" });
   }
-
-  response.status(200).json(place);
+  if (request.method === "DELETE") {
+    const places = await Place.findByIdAndDelete(id);
+    if (!places) {
+      return response.status(404).json({ status: "Not found" });
+    }
+    response.status(201).json({ status: "The place is deleted" });
+  }
 }
