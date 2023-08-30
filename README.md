@@ -1,6 +1,6 @@
-## 🗺️ Recap Project 6: Tourio App 
+## 🗺️ Tourio App 
 
-In my Recap Project I built a Tourio App, the best friend of all travelers: it displays sights you want to visit and lets you edit and delete them.
+In this Project I built a Tourio App, the best friend of all travelers: it displays sights you want to visit and lets you edit and delete them.
 Enjoy your self-made collection of favorite places! <br> 
 Happy travelling! 
 
